@@ -174,19 +174,19 @@ sub clgetthread {
 						$msgtext =~ s/&amp;/&/gi;
 						$from = $msg->{nickname};
 						my $ircfrom = $from;
-						$ircfrom =~ s/[^a-zA-Z0-9]/_/gi;
+						$ircfrom =~ s/[^a-zA-Z0-9\-]/_/gi;
 						$thismsg = ":" . $ircfrom. " PRIVMSG #colorless :" .$msgtext . "\n";
 					}
 					elsif( lc( $msg->{type} ) eq 'join' ) {
 						$from = $msg->{nickname};
 						my $ircfrom = $from;
-						$ircfrom =~ s/[^a-zA-Z0-9]/_/gi;
+						$ircfrom =~ s/[^a-zA-Z0-9\-]/_/gi;
 						$thismsg = ":$ircfrom!$ircfrom" . '@irc.colorless JOIN :#colorless' . "\n";
 					}
 					elsif( lc( $msg->{type} ) eq 'leave' ) {
 						$from = $msg->{nickname};
 						my $ircfrom = $from;
-						$ircfrom =~ s/[^a-zA-Z0-9]/_/gi;
+						$ircfrom =~ s/[^a-zA-Z0-9\-]/_/gi;
 						$thismsg = ":$ircfrom!$ircfrom" . '@irc.colorless PART #colorless' . "\n";
 					}
 					
