@@ -357,7 +357,9 @@ sub handleuser {
 			sleep(2);
 			print $sock ":irc.colorless 353 $nname = #colorless :$nname\n";
 			foreach( @users ) {
-				print $sock ":irc.colorless 353 $nname = #colorless :$_\n";
+				my $username = $_;
+				$username =~ s/[^a-zA-Z0-9]/_/gi;
+				print $sock ":irc.colorless 353 $username = #colorless :$_\n";
 			}
 			sleep(1);
 			print $sock ":irc.colorless 366 $nname #colorless :End of /NAMES list.\n";
